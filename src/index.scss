@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .tag {
+    &:hover {
+      .tag-child {
+        @apply block;
+      }
+    }
+  }
+}
