@@ -24,5 +24,9 @@ describe('Mount <General>', () => {
       addItemHandler={() => console.log('addItemHandler')}
       removeItemHandler={() => console.log('removeItemHandler')}
     />);
+
+    cy.get('h4').should('have.class', 'text-slate-500').contains('General');
+    cy.get('div').find('.tag').should('have.length', initialStates['tags-general'].length);
+    cy.get('button').should('have.class', 'inline-flex items-center').contains('New Tag');
   });
 });

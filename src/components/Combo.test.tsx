@@ -13,9 +13,10 @@ const initialStates = {
   'tags-portfolio': []
 };
 
+// Certificates
 describe('Certificates <Comobo>', () => {
   const suggestedTagsCertifications = ['ISO 9001', 'Vegan', 'Organic'];
-  it('Should render certificates component!', function () {
+  it('Should render certificates component!',  () => {
     mount(<Combo
       title={'Certificates'}
       tags={initialStates['tags-certificates']}
@@ -23,12 +24,17 @@ describe('Certificates <Comobo>', () => {
       suggestions={suggestedTagsCertifications}
       addItemHandler={() => console.log('addItemHandler is called')}
       removeItemHandler={() => console.log('removeItemHandler is called')}/>);
+
+    cy.get('h4').should('have.class', 'text-slate-500').contains('Certificates');
+    cy.get('div').find('.tag').should('have.length', initialStates['tags-certificates'].length);
+    cy.get('button').should('have.class', 'inline-flex items-center').contains('New Tag');
   });
 });
 
+// Portfolio
 describe('Portfolio <Comobo>', () => {
   const suggestedTagsPortfolio = ['European', 'Eco-friendly', 'German'];
-  it('Should render portfolio component!', function () {
+  it('Should render portfolio component!', () => {
     mount(<Combo
       title={'Portfolio'}
       tags={initialStates['tags-portfolio']}
@@ -36,5 +42,9 @@ describe('Portfolio <Comobo>', () => {
       suggestions={suggestedTagsPortfolio}
       addItemHandler={() => console.log('addItemHandler is called')}
       removeItemHandler={() => console.log('removeItemHandler is called')}/>);
+
+    cy.get('h4').should('have.class', 'text-slate-500').contains('Portfolio');
+    cy.get('div').find('.tag').should('have.length', initialStates['tags-portfolio'].length);
+    cy.get('button').should('have.class', 'inline-flex items-center').contains('New Tag');
   });
 });
